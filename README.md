@@ -1,4 +1,4 @@
-## Requisitos para executar o projeto --
+## Requisitos para executar o projeto
 
 -- .NET 5
 https://dotnet.microsoft.com/download

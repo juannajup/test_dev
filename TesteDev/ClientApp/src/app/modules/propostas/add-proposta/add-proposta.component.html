@@ -1,0 +1,41 @@
+<section>
+    <div class="card">
+      <h4 class="card-header">
+        Adicionar Proposta
+        <button class="btn btn-danger btn-sm float-right" [routerLink]="['/veiculos/detalhes', veiculo?.id]">
+          <em class="fa fa-times"></em> Cancelar
+        </button>
+        <button (click)="cadastrarProposta()" class="btn btn-success btn-sm float-right mr-2" [disabled]="!formCadastar.valid">
+          <em class="fa fa-save"></em> Salvar
+        </button>
+      </h4>
+      <div class="card-body">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6"><span class="font-weight-bold">Modelo:</span> {{veiculo?.modelo}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Marca:</span> {{veiculo?.marca}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Ano:</span> {{veiculo?.ano}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Preço:</span> {{veiculo?.preco | currency: 'BRL': 'symbol'}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Vendido: </span> <span class="badge badge-warning" *ngIf="veiculo?.vendido">Vendido</span></div>
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="formCadastar">
+          <div class="row">
+            <div class="col-md-6">
+              <app-input label="Nome" errorMessage="Campo Obrigatório">
+                <input class="form-control" formControlName="nomeCliente" placeholder="Nome">
+              </app-input>
+            </div>
+            <div class="col-md-6">
+              <app-input label="Valor" errorMessage="Campo Obrigatório">
+                <input class="form-control" type="number" formControlName="valor" placeholder="Valor">
+              </app-input>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+

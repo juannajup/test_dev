@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Propostas
+    </h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Veículo</th>
+              <th>Nome</th>
+              <th>Data</th>
+              <th class="text-right">Valor Proposta</th>
+              <th class="text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let proposta of propostas">
+            <tr>
+              <td>{{proposta?.veiculo?.modelo}} ({{proposta?.veiculo?.marca}})</td>
+              <td>{{proposta?.nomeCliente}}</td>
+              <td>{{proposta?.dataProposta | amDateFormat: 'DD/MM/YYYY'}}</td>
+              <td class="text-right">{{proposta?.valor | currency: 'BRL': 'symbol'}}</td>
+              <td class="text-right">
+                <button class="btn btn-success btn-sm mr-1" [routerLink]="['/propostas/editar-proposta', proposta?.id]"><i
+                    class="fa fa-edit"></i></button>
+                <button class="btn btn-danger btn-sm" (click)="deletarProposta(proposta.id)"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-xs-12" *ngIf="propostas?.length === 0">
+        <p class="lead text-center">
+          Não foram encontrados itens para sua busca.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

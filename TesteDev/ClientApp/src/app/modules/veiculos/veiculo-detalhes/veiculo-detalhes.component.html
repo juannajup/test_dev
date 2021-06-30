@@ -1,0 +1,67 @@
+<div class="card">
+  <h4 class="card-header">
+    <span class="badge badge-warning" *ngIf="veiculo?.vendido === true; else tagVencido">Vendido</span>
+    <ng-template #tagVencido>
+    </ng-template>
+
+    <button class="btn btn-danger btn-sm float-right" (click)="deletarVeiculo()"><em class="fa fa-trash"></em> Excluir</button>
+    <button class="btn btn-success btn-sm float-right mr-2" [routerLink]="['/veiculos/editar', veiculoId]"><em class="fa fa-edit"></em> Editar</button>
+  </h4>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4 border-right">
+            <img class="card-img-top" [src]="veiculo?.imagePath" *ngIf="veiculo?.imagePath; else noImagePath" alt="">
+            <ng-template #noImagePath>
+              <img class="card-img-top" src="/assets/img/noImagePath.jpg" alt="">
+            </ng-template>
+          </div>
+          <div class="col-md-8 my-auto">
+            <div><span class="font-weight-bold">Nome:</span> {{veiculo?.modelo}}</div>
+            <div><span class="font-weight-bold">Marca:</span> {{veiculo?.marca}}</div>
+            <div><span class="font-weight-bold">Ano:</span> {{veiculo?.ano}}</div>
+            <div><span class="font-weight-bold">Preço:</span> {{veiculo?.preco | currency: 'BRL': 'symbol'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>
+              Propostas
+              <button class="btn btn-success btn-sm float-right" [routerLink]="['/propostas/add-proposta', veiculo?.id]">
+                <em class="fa fa-plus"></em> Cadastrar Proposta
+              </button>
+            </h4>
+          </div>
+          <div class="card-body">
+            <table class="table" aria-describedby="">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Data</th>
+                  <th scope="col" class="text-right">Valor</th>
+                  <th scope="col" class="text-right">Ações</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let itemProposta of veiculo?.proposta">
+                <tr>
+                  <td>{{itemProposta?.nomeCliente}}</td>
+                  <td>{{itemProposta?.dataProposta | amDateFormat: 'DD/MM/YYYY'}}</td>
+                  <td class="text-right">{{itemProposta?.valor | currency: 'BRL': 'symbol'}}</td>
+                  <td class="text-right">
+                    <button class="btn btn-success btn-sm mr-1" [routerLink]="['/propostas/editar-proposta', itemProposta?.id]"><em class="fa fa-edit"></em></button>
+                    <button class="btn btn-danger btn-sm" (click)="deletarProposta(itemProposta.id)"><em class="fa fa-trash"></em></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

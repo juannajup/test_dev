@@ -1,0 +1,46 @@
+<section>
+
+    <form [formGroup]="formEditar" *ngIf="proposta | async; else loading">
+    <div class="card">
+      <h4 class="card-header">
+        Editar Proposta
+        <button class="btn btn-danger btn-sm float-right" [routerLink]="['/propostas/']"><em class="fa fa-times"></em>
+          Cancelar</button>
+        <button (click)="editarProposta()" class="btn btn-success btn-sm float-right mr-2" [disabled]="!formEditar.valid">
+          <em class="fa fa-save"></em> Salvar
+        </button>
+      </h4>
+      <div class="card-body">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6"><span class="font-weight-bold">Modelo:</span> {{(proposta | async)?.veiculo.modelo }}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Marca:</span> {{(proposta | async)?.veiculo.marca}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Ano:</span> {{(proposta | async)?.veiculo.ano}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Preço:</span> {{(proposta | async)?.veiculo.preco | currency: 'BRL': 'symbol'}}</div>
+              <div class="col-md-6"><span class="font-weight-bold">Vendido: </span> <span class="badge badge-warning" *ngIf="(proposta | async)?.veiculo.vendido">Vendido</span></div>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-input label="Nome" errorMessage="Campo Obrigatório">
+                <input class="form-control" formControlName="nomeCliente" placeholder="Nome">
+              </app-input>
+            </div>
+            <div class="col-md-6">
+              <app-input label="Valor" errorMessage="Campo Obrigatório">
+                <input class="form-control" type="number" formControlName="valor" placeholder="Valor">
+              </app-input>
+            </div>
+          </div>
+
+
+      </div>
+    </div>
+  </form>
+    <ng-template #loading>
+        Carregando Veículo...
+      </ng-template>
+  </section>
+

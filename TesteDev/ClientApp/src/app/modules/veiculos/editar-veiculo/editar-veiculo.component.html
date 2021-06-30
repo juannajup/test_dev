@@ -1,0 +1,47 @@
+<section>
+  <div class="card">
+    <h4 class="card-header">
+      Editar Veículo
+      <button class="btn btn-danger btn-sm float-right" [routerLink]='["/veiculos/detalhes", veiculoId]'><em class="fa fa-times"></em>
+        Cancelar</button>
+      <button (click)="salvarVeiculo()" class="btn btn-success btn-sm float-right mr-2" [disabled]="!formEditar.valid">
+        <em class="fa fa-save"></em> Salvar
+      </button>
+    </h4>
+    <div class="card-body">
+      <form [formGroup]="formEditar" *ngIf="veiculo | async; else loading">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group mt-3">
+              <label class="for-label mt-4 ml-5"><input type="checkbox" class="form-check-input" id="exampleCheck1"
+                  formControlName="vendido"> Vendido?</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <app-input label="Modelo" errorMessage="Campo Obrigatório">
+              <input class="form-control" formControlName="modelo" placeholder="Modelo">
+            </app-input>
+          </div>
+          <div class="col-md-4">
+            <app-input label="Marca" errorMessage="Campo Obrigatório">
+              <input class="form-control" formControlName="marca" placeholder="Marca">
+            </app-input>
+          </div>
+          <div class="col-md-6">
+            <app-input label="Ano" errorMessage="Campo Obrigatório">
+              <input class="form-control" type="number" formControlName="ano" placeholder="Ano">
+            </app-input>
+          </div>
+          <div class="col-md-6">
+            <app-input label="Preço" errorMessage="Campo Obrigatório">
+              <input class="form-control" type="number" formControlName="preco" placeholder="Preço">
+            </app-input>
+          </div>
+        </div>
+      </form>
+      <ng-template #loading>
+        Carregando Veículo...
+      </ng-template>
+    </div>
+  </div>
+</section>

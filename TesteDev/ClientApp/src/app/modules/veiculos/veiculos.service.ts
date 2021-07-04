@@ -13,12 +13,11 @@ export class VeiculosService {
   }
   */
 
+  constructor(private http: HttpClient) {}
+
   veiculos(): Observable<Veiculo[]> {
     return this.http.get<Veiculo[]>(`${APP_API}/veiculos`);
   }
-
-  constructor(private http: HttpClient) {}
-
 
   veiculoPorId(id: string): Observable<Veiculo> {
     return this.http.get<Veiculo>(`${APP_API}/veiculos/${id}`);
@@ -27,7 +26,6 @@ export class VeiculosService {
   addVeiculo(veiculo: Veiculo): Observable<Veiculo> {
     return this.http.post<Veiculo>(`${APP_API}/veiculos`, veiculo);
   }
-
 
 
   deletar(id: string) {

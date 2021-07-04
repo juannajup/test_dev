@@ -1,21 +1,21 @@
 <div class="card">
-  <div class="card-header">
-    <h4>Veículos
-      <button class="btn btn-primary btn-sm float-right" [routerLink]="'/veiculos/add-veiculo'"><em class="fa fa-plus"></em>
+    <div class="card-header">
+        <h4>Veículos
+            <button class="btn btn-primary btn-sm float-right" [routerLink]="'/veiculos/add-veiculo'"><em class="fa fa-plus"></em>
         Cadastrar Veículo
       </button>
-    </h4>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" >
-        <app-veiculo-card [veiculo]="veiculo"></app-veiculo-card>
-      </div>
-      <div class="col-xs-12" *ngIf="veiculos?.length === 0">
-        <p class="lead text-center">
-          Não foram encontrados itens para sua busca.
-        </p>
-      </div>
+        </h4>
     </div>
-  </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <app-veiculo-card [veiculo]="veiculos"></app-veiculo-card>
+            </div>
+            <div class="col-xs-12" *ngIf="veiculos?.length === 0">
+                <p class="lead text-center">
+                    Não foram encontrados itens para sua busca.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

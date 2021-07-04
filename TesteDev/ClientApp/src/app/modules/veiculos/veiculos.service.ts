@@ -7,6 +7,15 @@ import { Veiculo } from 'src/app/shared/models/veiculo';
 @Injectable()
 
 export class VeiculosService {
+  /*
+  veiculo() {
+    throw new Error('Method not implemented.');
+  }
+  */
+
+  veiculos(): Observable<Veiculo[]> {
+    return this.http.get<Veiculo[]>(`${APP_API}/veiculos`);
+  }
 
   constructor(private http: HttpClient) {}
 

@@ -43,9 +43,10 @@ namespace TesteDev.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProposta([FromBody])
+        public async Task<IActionResult> AddProposta([FromBody] Proposta proposta)
         {
             var veiculo = await _veiculoRepository.ObterPorId(proposta.VeiculoId);
+            Proposta propostaTemp = new Proposta();
 
             if (veiculo.Vendido == true)
             {

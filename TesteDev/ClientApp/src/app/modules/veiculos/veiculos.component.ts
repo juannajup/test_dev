@@ -10,10 +10,14 @@ export class VeiculosComponent implements OnInit {
 
   veiculos: Veiculo[];
 
-  constructor() { }
+  constructor(
+    private veiculosService: VeiculosService) 
+   { }
 
   ngOnInit() {
     this.veiculosService.veiculos().subscribe(veiculos => this.veiculos = veiculos);
   }
+
+  
 
 }

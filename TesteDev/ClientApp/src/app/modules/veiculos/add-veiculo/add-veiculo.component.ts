@@ -15,6 +15,7 @@ export class AddVeiculoComponent implements OnInit {
   veiculo: Veiculo;
   veiculoRetorno: Veiculo;
   veiculoId: string;
+  veiculosService: any;
 
   constructor(
     private formBuilder: FormBuilder,

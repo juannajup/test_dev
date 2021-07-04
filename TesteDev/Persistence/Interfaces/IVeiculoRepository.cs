@@ -13,6 +13,8 @@ namespace TesteDev.Persistence.Interfaces
 
         Task<Veiculo> ObterPorId(Guid id);
 
+        Task<Veiculo> Atualizar(Veiculo veiculo);
+
         Task Excluir(Veiculo veiculo);
     }
 }

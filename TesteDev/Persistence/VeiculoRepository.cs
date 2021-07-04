@@ -56,5 +56,10 @@ namespace TesteDev.Persistence
             _context.Veiculo.Remove(veiculo);
             await _context.SaveChangesAsync();
         }
+
+        public Task<Veiculo> Atualizar(Veiculo veiculo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
